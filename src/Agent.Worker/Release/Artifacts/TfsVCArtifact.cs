@@ -48,7 +48,7 @@ namespace Microsoft.VisualStudio.Services.Agent.Worker.Release.Artifacts
             }
 
             var rootDirectory = Directory.GetParent(downloadFolderPath).Name;
-            tfsVCEndpoint.Data.Add(Constants.Variables.Agent.BuildDirectory, rootDirectory);
+            executionContext.Variables.Set(Constants.Variables.Agent.BuildDirectory, rootDirectory);
             tfsVCEndpoint.Data.Add(Constants.Variables.Build.SourcesDirectory, downloadFolderPath);
             tfsVCEndpoint.Data.Add(Constants.Variables.Build.SourceVersion, artifactDefinition.Version);
 

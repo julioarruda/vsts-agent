@@ -91,13 +91,13 @@ namespace Microsoft.VisualStudio.Services.Agent.Tests.Worker.Release
 
                 await tfsVCArtifact.DownloadAsync(_ec.Object, _artifactDefinition, sourcesDirectory);
 
+
                 // verify tfsvc endpoint is set correctly
                 _sourceProvider.Verify(
                     x => x.GetSourceAsync(
                         It.IsAny<IExecutionContext>(),
                         It.Is<ServiceEndpoint>(y => y.Data.ContainsKey(WellKnownEndpointData.TfvcWorkspaceMapping) && y.Data.ContainsKey(WellKnownEndpointData.Clean)
-                        && y.Data.ContainsKey(Constants.Variables.Build.SourcesDirectory) && y.Data.ContainsKey(Constants.Variables.Agent.BuildDirectory)
-                        && y.Data.ContainsKey(Constants.Variables.Build.SourceVersion)),
+                        && y.Data.ContainsKey(Constants.Variables.Build.SourcesDirectory) && y.Data.ContainsKey(Constants.Variables.Build.SourceVersion)),
                         It.IsAny<CancellationToken>()));
             }
         }
